@@ -5,17 +5,99 @@ import javax.swing.*;
 public class Board {
 	private JFrame frame = new JFrame("Simple Frame");
 	private static JButton[][] board = new JButton[8][8];
-	JPanel p = new JPanel();
+	private JPanel p = new JPanel();
+	private JPanel panel = new JPanel();
 	
+	public static JButton WhiteQueen = new JButton("");
+	public static JButton WhiteBishop = new JButton("");
+	public static JButton WhiteKnight = new JButton("");
+	public static JButton WhiteRook = new JButton("");
+	
+	public static JButton BlackBishop = new JButton("");
+	public static JButton BlackQueen = new JButton("");
+	public static JButton BlackKnight = new JButton("");
+	public static JButton BlackRook = new JButton("");
 	public static JButton[][] getBoard(){
 		return board;
 	}
 	
 	public Board(){
+		
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(1000,700);
+		frame.setSize(1200,700);
 	
 		p.setLayout(null);
+		
+		WhiteQueen.setBounds(600,0,75,75);
+		WhiteQueen.setFont(new Font("Arial Unicode MS", Font.PLAIN, 40));
+		WhiteQueen.setText(Constants.WHITEQUEEN);
+		WhiteQueen.setBackground(Color.white);
+		WhiteQueen.setName("Queen");
+		WhiteQueen.setVisible(false);
+		p.add(WhiteQueen);
+		
+		
+		WhiteBishop.setBounds(600+75,0,75,75);
+		WhiteBishop.setFont(new Font("Arial Unicode MS", Font.PLAIN, 40));
+		WhiteBishop.setText(Constants.WHITEBISHOP);
+		WhiteBishop.setBackground(Color.white);
+		WhiteBishop.setName("Bishop");
+		WhiteBishop.setVisible(false);
+		p.add(WhiteBishop);
+		
+		
+		WhiteKnight.setBounds(600+150,0,75,75);
+		WhiteKnight.setFont(new Font("Arial Unicode MS", Font.PLAIN, 40));
+		WhiteKnight.setText(Constants.WHITEKNIGHT);
+		WhiteKnight.setBackground(Color.white);
+		WhiteKnight.setName("Knight");
+		WhiteKnight.setVisible(false);
+		p.add(WhiteKnight);
+		
+		WhiteRook.setBounds(600+225,0,75,75);
+		WhiteRook.setFont(new Font("Arial Unicode MS", Font.PLAIN, 40));
+		WhiteRook.setText(Constants.WHITEROOK);
+		WhiteRook.setBackground(Color.white);
+		WhiteRook.setName("Rook");
+		WhiteRook.setVisible(false);
+		p.add(WhiteRook);
+		
+		
+		BlackQueen.setBounds(600,500,75,75);
+		BlackQueen.setFont(new Font("Arial Unicode MS", Font.PLAIN, 40));
+		BlackQueen.setText(Constants.BLACKQUEEN);
+		BlackQueen.setBackground(Color.white);
+		BlackQueen.setName("Queen");
+		BlackQueen.setVisible(false);
+		p.add(BlackQueen);
+		
+		
+		BlackBishop.setBounds(600+75,500,75,75);
+		BlackBishop.setFont(new Font("Arial Unicode MS", Font.PLAIN, 40));
+		BlackBishop.setText(Constants.BLACKBISHOP);
+		BlackBishop.setBackground(Color.white);
+		BlackBishop.setName("Bishop");
+		BlackBishop.setVisible(false);
+		p.add(BlackBishop);
+		
+		
+		BlackKnight.setBounds(600+150,500,75,75);
+		BlackKnight.setFont(new Font("Arial Unicode MS", Font.PLAIN, 40));
+		BlackKnight.setText(Constants.BLACKKNIGHT);
+		BlackKnight.setBackground(Color.white);
+		BlackKnight.setName("Knight");
+		BlackKnight.setVisible(false);
+		p.add(BlackKnight);
+		
+		
+		BlackRook.setBounds(600+225,500,75,75);
+		BlackRook.setFont(new Font("Arial Unicode MS", Font.PLAIN, 40));
+		BlackRook.setText(Constants.BLACKROOK);
+		BlackRook.setBackground(Color.white);
+		BlackRook.setName("Rook");
+		BlackRook.setVisible(false);
+		p.add(BlackRook);
 		
 		//<Rocks>
 		board[0][0] = new JButton("");
@@ -207,21 +289,49 @@ public class Board {
 		
 		//</empty buttons>
 		p.setBounds(0,0,400,400);
-		JPanel panel = new JPanel();
 		panel.add(p);
 		
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 		frame.setContentPane(panel);
 		frame.setVisible(true);
 	}
+	public static void ShowPromoteWhitePawn(){
+		WhiteBishop.setVisible(true);
+		WhiteKnight.setVisible(true);
+		WhiteQueen.setVisible(true);
+		WhiteRook.setVisible(true);
+	}
+	public static void ShowPromoteBlackPawn(){
+		BlackBishop.setVisible(true);
+		BlackKnight.setVisible(true);
+		BlackQueen.setVisible(true);
+		BlackRook.setVisible(true);
+	}
+	public static void HidePromoteWhitePawn(){
+		WhiteBishop.setVisible(false);
+		WhiteKnight.setVisible(false);
+		WhiteQueen.setVisible(false);
+		WhiteRook.setVisible(false);
+	}
+	public static void HidePromoteBlackPawn(){
+		BlackBishop.setVisible(false);
+		BlackKnight.setVisible(false);
+		BlackQueen.setVisible(false);
+		BlackRook.setVisible(false);
+	}
 	public void BlackWon(){
 		JTextField tf = new JTextField("BlackWon");
-		tf.setBounds(600,50,100,30);
+		tf.setBounds(600,200,100,30);
 		p.add(tf);
 	}
 	public void WhiteWon(){
 		JTextField tf = new JTextField("WhiteWon");
-		tf.setBounds(600,50,100,30);
+		tf.setBounds(600,250,100,30);
+		p.add(tf);
+	}
+	public void Stalemate(){
+		JTextField tf = new JTextField("Stalemate");
+		tf.setBounds(600,300,100,30);
 		p.add(tf);
 	}
 }

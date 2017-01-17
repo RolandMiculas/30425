@@ -30,6 +30,26 @@ public class King extends Piece{
 		int[][] array = new int[8][8];
 		
 		if(isWhite){
+			if(y==4 && x==7){
+				if(pieces[7][5]== null && pieces[7][6] == null){
+					if(pieces[7][7] !=null){
+						if(pieces[7][7] instanceof Rook && pieces[7][7].getIsWhite()==true)	{
+							if(King.checkMoveForChess(7, 4, 7, 6,true)==false){
+								array[7][6]=1;
+							}
+						}
+					}
+				}
+				if(pieces[7][3]==null && pieces[7][2]==null && pieces[7][1]==null){
+					if(pieces[7][0] !=null){
+						if(pieces[7][0] instanceof Rook && pieces[7][0].getIsWhite()==true)	{
+							if(King.checkMoveForChess(7, 4, 7, 2,true)==false){
+								array[7][2]=1;
+							}
+						}
+					}
+				}
+			}
 			if(x<7){
 				if(pieces[x+1][y] == null){
 					if(King.checkMoveForChess(x, y, x+1, y,true)==false){
@@ -72,7 +92,7 @@ public class King extends Piece{
 					}
 				}
 			}
-			if(x>0){
+			if(y>0){
 				if(pieces[x][y-1] == null){
 					if(King.checkMoveForChess(x, y, x, y-1,true)==false){
 						array[x][y-1]=1;
@@ -128,22 +148,42 @@ public class King extends Piece{
 					}
 				}
 			}
-			if(x>0 && y>0){
-				if(pieces[x-1][y-1] == null){
-					if(King.checkMoveForChess(x, y, x-1, y-1,true)==false){
-						array[x-1][y-1]=1;
+			if(x>0 && y<7){
+				if(pieces[x-1][y+1] == null){
+					if(King.checkMoveForChess(x, y, x-1, y+1,true)==false){
+						array[x-1][y+1]=1;
 					}
 				}
 				else{
-					if(pieces[x-1][y-1].getIsWhite()==false){
-						if(King.checkMoveForChess(x, y, x-1, y-1,true)==false){
-							array[x-1][y-1]=1;
+					if(pieces[x-1][y+1].getIsWhite()==false){
+						if(King.checkMoveForChess(x, y, x-1, y+1,true)==false){
+							array[x-1][y+1]=1;
 						}
 					}
 				}
 			}
 		}
 		else{
+			if(y==4 && x==0){
+				if(pieces[0][5]== null && pieces[0][6] == null){
+					if(pieces[0][7] !=null){
+						if(pieces[0][7] instanceof Rook && pieces[0][7].getIsWhite()==false)	{
+							if(King.checkMoveForChess(0, 4, 0, 6,false)==false){
+								array[0][6]=1;
+							}
+						}
+					}
+				}
+				if(pieces[0][3]==null && pieces[0][2]==null && pieces[0][1]==null){
+					if(pieces[0][0] !=null){
+						if(pieces[0][0] instanceof Rook && pieces[0][0].getIsWhite()==false)	{
+							if(King.checkMoveForChess(0, 4, 0, 2,false)==false){
+								array[0][2]=1;
+							}
+						}
+					}
+				}
+			}
 			if(x<7){
 				if(pieces[x+1][y] == null){
 					if(King.checkMoveForChess(x, y, x+1, y,false)==false){
@@ -186,7 +226,7 @@ public class King extends Piece{
 					}
 				}
 			}
-			if(x>0){
+			if(y>0){
 				if(pieces[x][y-1] == null){
 					if(King.checkMoveForChess(x, y, x, y-1,false)==false){
 						array[x][y-1]=1;
@@ -242,16 +282,16 @@ public class King extends Piece{
 					}
 				}
 			}
-			if(x>0 && y>0){
-				if(pieces[x-1][y-1] == null){
-					if(King.checkMoveForChess(x, y, x-1, y-1,false)==false){
-						array[x-1][y-1]=1;
+			if(x>0 && y<7){
+				if(pieces[x-1][y+1] == null){
+					if(King.checkMoveForChess(x, y, x-1, y+1,false)==false){
+						array[x-1][y+1]=1;
 					}
 				}
 				else{
-					if(pieces[x-1][y-1].getIsWhite()==true){
-						if(King.checkMoveForChess(x, y, x-1, y-1,false)==false){
-							array[x-1][y-1]=1;
+					if(pieces[x-1][y+1].getIsWhite()==true){
+						if(King.checkMoveForChess(x, y, x-1, y+1,false)==false){
+							array[x-1][y+1]=1;
 						}
 					}
 				}
@@ -386,7 +426,7 @@ public class King extends Piece{
 					}
 				}
 			}
-			if(x>0){
+			if(y>0){
 				if(pieces[x][y-1] == null){
 					array[x][y-1]=1;
 				}
@@ -426,13 +466,13 @@ public class King extends Piece{
 					}
 				}
 			}
-			if(x>0 && y>0){
-				if(pieces[x-1][y-1] == null){
-					array[x-1][y-1]=1;
+			if(x>0 && y<7){
+				if(pieces[x-1][y+1] == null){
+					array[x-1][y+1]=1;
 				}
 				else{
-					if(pieces[x-1][y-1].getIsWhite()==false){
-						array[x-1][y-1]=1;
+					if(pieces[x-1][y+1].getIsWhite()==false){
+						array[x-1][y+1]=1;
 					}
 				}
 			}
@@ -468,7 +508,7 @@ public class King extends Piece{
 					}
 				}
 			}
-			if(x>0){
+			if(y>0){
 				if(pieces[x][y-1] == null){
 					array[x][y-1]=1;
 				}
@@ -508,13 +548,13 @@ public class King extends Piece{
 					}
 				}
 			}
-			if(x>0 && y>0){
-				if(pieces[x-1][y-1] == null){
-					array[x-1][y-1]=1;
+			if(x>0 && y<7){
+				if(pieces[x-1][y+1] == null){
+					array[x-1][y+1]=1;
 				}
 				else{
-					if(pieces[x-1][y-1].getIsWhite()==true){
-						array[x-1][y-1]=1;
+					if(pieces[x-1][y+1].getIsWhite()==true){
+						array[x-1][y+1]=1;
 					}
 				}
 			}
@@ -540,5 +580,42 @@ public class King extends Piece{
 			}//i
 		}
 		return true;
+	}
+	public static boolean checkStaleMate(boolean white){
+		Piece[][] pieces = Matrix.getMatrix();
+		boolean check = true;
+		for(int i = 0 ; i<pieces.length;i++){
+			for(int j = 0 ; j<pieces[0].length;j++){
+				if(pieces[i][j]!=null){
+					if(pieces[i][j].getIsWhite()==white){
+						int[][] newArray = pieces[i][j].getAvailableMoves();
+						for(int k = 0 ; k < 8 ;k++){
+							for(int l = 0 ; l< 8;l++){
+								if(newArray[l][k]==1){
+									check = false;
+								}//l
+							}
+						}//k
+					}
+				}//j
+			}//i
+		}
+		if(check==true){
+			for(int i = 0 ; i < 8;i++){
+				for(int j = 0 ; j<8 ; j++){
+					if(pieces[i][j]!=null){
+						if(pieces[i][j] instanceof King){
+							if(pieces[i][j].getIsWhite()==white){
+								if(pieces[i][j].kingIsInCheck(pieces)==false){
+									if(check == true)
+										return true;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 }

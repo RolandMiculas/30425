@@ -2,6 +2,9 @@ package pieces;
 
 public class Matrix {
 	private static Piece[][] pieces = new Piece[8][8];
+	public static int promotePawn = 0;
+	public static int promoteX = 8;
+	public static int promoteY = 8;
 	public static Piece[][] getMatrix(){
 		return pieces;
 	}

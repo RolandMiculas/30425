@@ -1,5 +1,7 @@
 package pieces;
 
+import board.Board;
+
 public class Pawn extends Piece{
 	private int x;
 	private int y;
@@ -84,6 +86,11 @@ public class Pawn extends Piece{
 							}
 						}
 					}
+				}else{
+					Matrix.promotePawn = 1;
+					Matrix.promoteX=x;
+					Matrix.promoteY=y;
+					Board.ShowPromoteWhitePawn();
 				}
 			}
 		}
@@ -143,6 +150,11 @@ public class Pawn extends Piece{
 							}
 						}
 					}
+				}else{
+					Board.ShowPromoteBlackPawn();
+					Matrix.promoteX=x;
+					Matrix.promoteY=y;
+					Matrix.promotePawn = 1;
 				}
 			}
 		}

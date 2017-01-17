@@ -26,6 +26,9 @@ public class Main {
 				else if(King.checkCheckMate(true)==true){
 					board.BlackWon();
 				}
+				if(King.checkStaleMate(true)==true || King.checkStaleMate(false)==true){
+					board.Stalemate();
+				}
 			}
 		};
 		for(int i = 0 ; i< 8;i++){
@@ -33,5 +36,14 @@ public class Main {
 			buttons[i][j].addActionListener(e);
 			}
 		}
+		Board.BlackBishop.addActionListener(e);
+		Board.BlackKnight.addActionListener(e);
+		Board.BlackQueen.addActionListener(e);
+		Board.BlackRook.addActionListener(e);
+		
+		Board.WhiteBishop.addActionListener(e);
+		Board.WhiteKnight.addActionListener(e);
+		Board.WhiteQueen.addActionListener(e);
+		Board.WhiteRook.addActionListener(e);
 	}
 }
